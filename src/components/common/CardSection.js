@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet, Platform} from 'react-native';
 
 const CardSection = ({ children }) => {
     return(
@@ -9,17 +9,29 @@ const CardSection = ({ children }) => {
     );
 };
 
-const styles = {
-    containerStyle: {
-        borderBottomWidth: 1,
-        padding: 5,
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        alignItems: 'stretch',
-        flexDirection: 'row',
-        borderColor: '#ddd',
-        position: 'relative'
-    }
-};
+const styles = StyleSheet.create({
+    containerStyle: Platform.select({
+        ios: {
+            borderBottomWidth: 1,
+            padding: 5,
+            backgroundColor: '#fff',
+            justifyContent: 'center',
+            flexDirection: 'row',
+            borderColor: '#ddd',
+            position: 'relative'
+        },
+        android: {
+            borderBottomWidth: 1,
+            padding: 5,
+            paddingLeft: '5%',
+            backgroundColor: '#fff',
+            justifyContent: 'flex-start',
+            flexDirection: 'row',
+            borderColor: '#ddd',
+            position: 'relative'
+        }
+
+    })
+});
 
 export { CardSection };
